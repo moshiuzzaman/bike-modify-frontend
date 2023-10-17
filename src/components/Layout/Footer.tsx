@@ -10,7 +10,7 @@ const FooterContent = {
 };
 const Footer = () => {
 	return (
-		<div className=" pt-24 pb-24 bg-blue-950	 text-white-500">
+		<div className=" pt-24 pb-24 bg-blue-950	 text-white">
 			<div className="max-w-screen-xl w-full mx-auto px-6 sm:px-8 lg:px-16 grid grid-rows-2 sm:grid-rows-1 grid-flow-row sm:grid-flow-col grid-cols-3 sm:grid-cols-12 gap-4">
 				<div className="row-span-2 sm:col-span-4 col-start-1 col-end-4 sm:col-end-5 flex flex-col items-start ">
 					<div className="col-start-1 col-end-2 flex items-center pb-4">
@@ -62,7 +62,7 @@ const Footer = () => {
 				
         
 				<div className=" row-span-2 sm:col-span-2 sm:col-start-7 sm:col-end-9 flex flex-col">
-					<p className="text-white-500 mb-4 font-medium text-lg">
+					<p className="text-white mb-4 font-medium text-lg">
 						Product
 					</p>
 					<ul className="text-gray-500 ">
@@ -87,7 +87,7 @@ const Footer = () => {
 					</ul>
 				</div>
 				<div className="row-span-2 sm:col-span-2 sm:col-start-9 sm:col-end-11 flex flex-col">
-					<p className="text-white-500 mb-4 font-medium text-lg">
+					<p className="text-white mb-4 font-medium text-lg">
 						Engage
 					</p>
 					<ul className="text-gray-500">
@@ -112,7 +112,7 @@ const Footer = () => {
 					</ul>
 				</div>
 				<div className="row-span-2 sm:col-span-2 sm:col-start-11 sm:col-end-13 flex flex-col">
-					<p className="text-white-500 mb-4 font-medium text-lg">
+					<p className="text-white mb-4 font-medium text-lg">
 						Earn Money
 					</p>
 					<ul className="text-gray-500">

@@ -11,7 +11,7 @@ const ButtonOutline = ({ children, to }: ButtonOutlineProps) => {
   return (
     <button
       onClick={() => router.push(`/${to}`)}
-      className="font-medium tracking-wide py-2 px-5 sm:px-8 border border-orange-500 text-black-600 bg-primary outline-none rounded-l-full rounded-r-full capitalize hover:bg-white-500 hover:text-primary-500 transition-all hover:shadow-orange "
+      className="font-medium tracking-wide py-2 px-5 sm:px-8 border border-black text-black bg-lime-500	 outline-none rounded-l-full rounded-r-full capitalize hover:bg-white-500 hover:text-primary-500 transition-all hover:shadow-orange "
     >
       {children}
     </button>

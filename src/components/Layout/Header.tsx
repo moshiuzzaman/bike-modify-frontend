@@ -6,6 +6,7 @@ import Logo from "../../../public/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Button } from "flowbite-react";
 
 const Header = () => {
     const router = useRouter();
@@ -20,13 +21,15 @@ const Header = () => {
     const backHome = () => {
         router.push("/");
     };
+    console.log(activeLink);
+    
     return (
         <>
             <header
                 className={
                     "fixed top-0 w-full  z-30  transition-all " +
                     (scrollActive || router.pathname !== "/"
-                        ? " shadow-md pt-0 bg-black-600"
+                        ? " shadow-md pt-0 bg-black"
                         : " pt-4")
                 }
             >
@@ -35,9 +38,9 @@ const Header = () => {
                         <Link href="/">
                             <Image
                                 className="cursor-pointer"
-                                src={Logo}
-                                width={70}
-                                height={70}
+                                src="https://websitedemos.net/bike-modification-04/wp-content/uploads/sites/736/2020/11/custom-bike-builder-logo-white.svg"
+                                width={140}
+                                height={100}
                                 alt="Logo"
                             ></Image>
                         </Link>
@@ -47,7 +50,7 @@ const Header = () => {
                             <button
                                 onClick={backHome}
                                 className={
-                                    "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative text-white-500 hover:text-orange-500 "
+                                    "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative text-white hover:text-lime-500 "
                                 }
                             >
                                 Home
@@ -65,9 +68,9 @@ const Header = () => {
                                     }}
                                     className={
                                         "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
-                                        (activeLink === "about"
-                                            ? " text-primary animation-active "
-                                            : " text-white-500 hover:text-orange-500 ")
+                                        (activeLink === "home"
+                                            ? " text-lime-500 animation-active "
+                                            : " text-white hover:text-lime-500 ")
                                     }
                                 >
                                     About
@@ -75,21 +78,21 @@ const Header = () => {
 
                                 <LinkScroll
                                     activeClass="active"
-                                    to="schedule"
+                                    to="services"
                                     spy={true}
                                     smooth={true}
                                     duration={1000}
                                     onSetActive={() => {
-                                        setActiveLink("schedule");
+                                        setActiveLink("services");
                                     }}
                                     className={
                                         "px-4 py-2  mx-2 cursor-pointer animation-hover inline-block relative" +
-                                        (activeLink === "schedule"
-                                            ? " text-primary animation-active "
-                                            : " text-white-500 hover:text-orange-500 ")
+                                        (activeLink === "services"
+                                            ? " text-lime-500 animation-active "
+                                            : " text-white hover:text-lime-500 ")
                                     }
                                 >
-                                    Schedule
+                                    Services
                                 </LinkScroll>
                                 <LinkScroll
                                     activeClass="active"
@@ -104,7 +107,7 @@ const Header = () => {
                                         "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative " +
                                         (activeLink === "speaker"
                                             ? " text-primary animation-active "
-                                            : " text-white-500 hover:text-orange-500 ")
+                                            : " text-white hover:text-lime-500 ")
                                     }
                                 >
                                     Speaker
@@ -113,9 +116,10 @@ const Header = () => {
                         )}
                     </ul>
                     <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
-                        <ButtonOutline to="registration">
-                            Get Registered
-                        </ButtonOutline>
+                       
+                        <Button gradientDuoTone="cyanToBlue" outline>
+                            <p>Users</p>
+                        </Button>
                     </div>
                 </nav>
             </header>
@@ -137,7 +141,7 @@ const Header = () => {
                                 className={
                                     "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                                     (activeLink === "about"
-                                        ? "  border-orange-500 text-orange-500"
+                                        ? "  border-orange-500 text-lime-500"
                                         : " border-transparent")
                                 }
                             >
@@ -169,7 +173,7 @@ const Header = () => {
                                 className={
                                     "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                                     (activeLink === "schedule"
-                                        ? "  border-orange-500 text-orange-500"
+                                        ? "  border-orange-500 text-lime-500"
                                         : " border-transparent ")
                                 }
                             >
@@ -201,7 +205,7 @@ const Header = () => {
                                 className={
                                     "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                                     (activeLink === "speaker"
-                                        ? "  border-orange-500 text-orange-500"
+                                        ? "  border-orange-500 text-lime-500"
                                         : " border-transparent ")
                                 }
                             >
@@ -237,7 +241,7 @@ const Header = () => {
                                 className={
                                     "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
                                     (activeLink === "schedule"
-                                        ? "  border-orange-500 text-orange-500"
+                                        ? "  border-orange-500 text-lime-500"
                                         : " border-transparent ")
                                 }
                             >

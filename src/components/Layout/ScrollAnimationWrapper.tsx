@@ -1,6 +1,12 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-export default function ScrollAnimationWrapper({children, className, ...props}) {
+interface ScrollAnimationWrapperProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export default function ScrollAnimationWrapper({children, className, ...props}: ScrollAnimationWrapperProps) {
   return (
     <motion.div
       initial="offscreen"
