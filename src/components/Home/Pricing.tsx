@@ -1,52 +1,9 @@
-import Image from "next/image";
+
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import getScrollAnimation from "../../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "../Layout/ScrollAnimationWrapper";
-import { HiPlay } from "react-icons/hi";
 
-import { Button } from "flowbite-react";
-
-const PriceData = [
-    {
-        title: "Basic",
-        icon: "https://img.icons8.com/ios-filled/50/four-squares.png",
-        price: 2000,
-        features: [
-            "1 Year Free Service",
-            "Free Bike Wash",
-            "Free Bike Inspection",
-        ],
-    },
-    {
-        title: "Standard",
-        icon: "https://img.icons8.com/ios-filled/50/four-squares.png",
-        price: 3000,
-        features: [
-            "1 Year Free Service",
-            "Free Bike Wash",
-            "Free Bike Inspection",
-            "Bike body cleaning",
-            "Bike body polishing",
-        ],
-    },
-    {
-        title: "Premium",
-        icon: "https://img.icons8.com/ios-filled/50/four-squares.png",
-        price: 5000,
-        features: [
-            "1 Year Free Service",
-            "Free Bike Wash",
-            "Free Bike Inspection",
-            "Bike body cleaning",
-            "Bike body polishing",
-            "Engine oil change",
-            "Chain cleaning",
-            "Chain lubrication",
-            "Chain adjustment",
-        ],
-    },
-];
 
 const Prices = () => {
     const scrollAnimation = useMemo(() => getScrollAnimation(), []);
