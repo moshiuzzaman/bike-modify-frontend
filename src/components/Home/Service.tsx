@@ -61,9 +61,9 @@ const Service = () => {
                     <h1 className="text-6xl font-bold">{services.title}</h1>
                 </div>
                 <div className="grid grid-flow-row grid-cols-3 justify-center  w-4/3 gap-16 ">
-                    {services.listOfServices.map((data) => (
+                    {services.listOfServices.map((data,index) => (
                         <ScrollAnimationWrapper
-                            key={data.title}
+                            key={index}
                             className="flex w-full justify-end"
                         >
                             <motion.div

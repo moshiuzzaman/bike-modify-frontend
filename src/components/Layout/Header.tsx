@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 // Import react scroll
 import { Link as LinkScroll } from "react-scroll";
@@ -7,8 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "flowbite-react";
+import { signOut, useSession } from "next-auth/react";
 
 const Header = () => {
+    const { data: user, status } = useSession();
+
     const router = useRouter();
     // usestate type set null | string
     const [activeLink, setActiveLink] = useState<null | string>(null);
@@ -21,8 +26,7 @@ const Header = () => {
     const backHome = () => {
         router.push("/");
     };
-    console.log(activeLink);
-    
+
     return (
         <>
             <header
@@ -116,10 +120,46 @@ const Header = () => {
                         )}
                     </ul>
                     <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
-                       
-                        <Button gradientDuoTone="cyanToBlue" outline>
-                            <p>Users</p>
-                        </Button>
+                        {user ? (
+                            <>
+                                <Link href="/dashboard">
+                                    <Button
+                                        gradientDuoTone="cyanToBlue"
+                                        outline
+                                        className="mr-2"
+                                    >
+                                        <p>Dashboard</p>
+                                    </Button>
+                                </Link>{" "}
+                                <Button
+                                    onClick={() => signOut()}
+                                    gradientDuoTone="cyanToBlue"
+                                    outline
+                                >
+                                    <p>Logout</p>
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href="/login">
+                                    <Button
+                                        gradientDuoTone="cyanToBlue"
+                                        outline
+                                        className="mr-2"
+                                    >
+                                        <p>Login</p>
+                                    </Button>
+                                </Link>
+                                <Link href="/signup">
+                                    <Button
+                                        gradientDuoTone="cyanToBlue"
+                                        outline
+                                    >
+                                        <p>Sign Up</p>
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </nav>
             </header>

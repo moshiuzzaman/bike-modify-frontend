@@ -96,9 +96,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                 </svg>
                             </a>
@@ -114,9 +114,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                     <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
                                 </svg>
@@ -157,9 +157,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                 </svg>
                             </a>
@@ -215,9 +215,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                 </svg>
                             </a>
@@ -233,9 +233,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                     <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
                                 </svg>
@@ -276,9 +276,9 @@ const LatestWork = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     ></path>
                                 </svg>
                             </a>

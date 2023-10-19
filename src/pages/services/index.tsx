@@ -1,8 +1,16 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Layout from "@/components/Layout/Layout";
 import SeoHead from "@/components/SeoHead";
-import { Button, Carousel, Checkbox, Select, TextInput } from "flowbite-react";
+import {
+    Button,
+    Carousel,
+    Checkbox,
+    Pagination,
+    Select,
+    TextInput,
+} from "flowbite-react";
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 
 export const services = [
     {
@@ -10,53 +18,49 @@ export const services = [
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
-    
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
     {
         title: "Car wash",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
     {
         title: "Car wash",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
     {
         title: "Car wash",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
     {
         title: "Car wash",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
     {
         title: "Car wash",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptatibus.",
         price: 200,
-        image:
-            "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
+        image: "https://t3.ftcdn.net/jpg/04/32/24/08/360_F_432240885_U5v0N3PaSG4echxjah4OkgpaSFwQdkpx.jpg",
     },
 ];
-
 const index = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const onPageChange = (page: number) => {
+        setCurrentPage(page);
+    };
     return (
         <>
             <SeoHead title="Car modify | Services" />
@@ -114,30 +118,44 @@ const index = () => {
                             </Select>
                         </div>
                         <div className="grid grid-cols-3 flex justify-between items-center gap-4 my-4">
-                            {
-                                services.map((data,index) => (
-                                    <div key={index} className=" bg-white p-4 rounded">
-                                        <Image
-                                            width={300}
-                                            height={200}
-                                            src={data.image}
-                                            alt="service image"
-                                        ></Image>
-                                        <h1 className="text-xl font-bold mt-4">
-                                            {data.title}
+                            {services.map((data, index) => (
+                                <div
+                                    key={index}
+                                    className=" bg-white p-4 rounded"
+                                >
+                                    <Image
+                                        width={300}
+                                        height={200}
+                                        src={data.image}
+                                        alt="service image"
+                                    ></Image>
+                                    <h1 className="text-xl font-bold mt-4">
+                                        {data.title}
+                                    </h1>
+                                    <p className="text-sm my-2">
+                                        {data.description}
+                                    </p>
+                                    <div className="flex items-center justify-between">
+                                        <h1 className="text-xl font-bold">
+                                            ${data.price}
                                         </h1>
-                                        <p className="text-sm my-2">
-                                            {data.description}
-                                        </p>
-                                        <div className="flex items-center justify-between">
-                                            <h1 className="text-xl font-bold">
-                                                ${data.price}
-                                            </h1>
-                                            <Button>Book now</Button>
-                                        </div>
+                                        <Button>Book now</Button>
                                     </div>
-                                ))
-                            }
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex items-center justify-center text-center">
+                            <Pagination
+                                currentPage={currentPage}
+                                layout="pagination"
+                                nextLabel="Go forward"
+                                onPageChange={(page) => {
+                                    onPageChange(page);
+                                }}
+                                previousLabel="Go back"
+                                showIcons
+                                totalPages={1000}
+                            />
                         </div>
                     </div>
                 </div>
