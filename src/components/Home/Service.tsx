@@ -3,6 +3,11 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import getScrollAnimation from "../../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "../Layout/ScrollAnimationWrapper";
+import { useGetServicesQuery } from "@/redux/features/service/service.api";
+import { Button } from "flowbite-react";
+import SingleService from "../Singleservice";
+import Link from "next/link";
+
 
 const services = {
     title: "Our services",
@@ -49,6 +54,7 @@ const services = {
 
 const Service = () => {
     const scrollAnimation = useMemo(() => getScrollAnimation(), []);
+    const { data } = useGetServicesQuery("limit=6");
 
     return (
         <div className="bg-white-500">
@@ -60,35 +66,15 @@ const Service = () => {
                     <h4 className="text-xl">{services.description}</h4>
                     <h1 className="text-6xl font-bold">{services.title}</h1>
                 </div>
-                <div className="grid grid-flow-row grid-cols-3 justify-center  w-4/3 gap-16 ">
-                    {services.listOfServices.map((data,index) => (
-                        <ScrollAnimationWrapper
-                            key={index}
-                            className="flex w-full justify-end"
-                        >
-                            <motion.div
-                                className="h-full p-4"
-                                variants={scrollAnimation}
-                            >
-                                <div>
-                                    <div className="flex flex-col justify-center text-center items-center">
-                                        <Image
-                                            src={data.icon}
-                                            width={85}
-                                            height={80}
-                                            alt="Picture of the author"
-                                        />
-
-                                        <h1 className=" text-2xl  mb-2 font-bold">
-                                            {data.title}
-                                        </h1>
-                                        <h4>{data.description}</h4>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </ScrollAnimationWrapper>
+                <div className="grid grid-cols-3 flex justify-between items-center gap-4 my-4">
+                    {data?.data?.map((data: any, index: any) => (
+                        <SingleService key={index} {...data} />
                     ))}
                 </div>
+
+                <Link href="/services">
+                    <Button className="mx-auto">View all</Button>
+                </Link>
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import React, { Children, ReactNode, useEffect } from "react";
-import { Sidebar } from "flowbite-react";
+import { Button, Sidebar } from "flowbite-react";
 import sidebarItems from "@/constants/sidebarItems";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { IUser } from "@/types";
 
 type LayoutProps = {
@@ -28,9 +28,22 @@ const DashboardLayout = ({ children }: LayoutProps) => {
                             <Sidebar.ItemGroup>
                                 {sidebar.map((item, index) => (
                                     <Link key={index} href={item.href}>
-                                        <p>{item.label}</p>
+                                        <p className="bg-gray-300 m-2 p-4 rounded">
+                                            {item.label}
+                                        </p>
                                     </Link>
                                 ))}
+                                <Link key="home" href="/">
+                                    <p className="bg-gray-300 m-2 p-4 rounded mt-20">
+                                        Home
+                                    </p>
+                                </Link>
+                                <Button
+                                    onClick={() => signOut()}
+                                    className="w-full"
+                                >
+                                    sign out
+                                </Button>
                             </Sidebar.ItemGroup>
                         </Sidebar.Items>
                     </Sidebar>

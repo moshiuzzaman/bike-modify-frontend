@@ -1,4 +1,5 @@
 import { api } from "@/redux/api/apiSlice";
+import { tagTypes } from "@/redux/tag-types";
 
 const userApi = api.injectEndpoints({
     endpoints: (build) => ({
@@ -19,6 +20,7 @@ const userApi = api.injectEndpoints({
                 body: data,
                 contentType: "multipart/form-data",
             }),
+            invalidatesTags: [tagTypes.user],
         }),
 
         updateUser: build.mutation({
@@ -33,10 +35,42 @@ const userApi = api.injectEndpoints({
 
                 contentType: "multipart/form-data",
             }),
+            invalidatesTags: [tagTypes.user],
         }),
 
         getSingleUser: build.query({
             query: (id) => `/users/${id}`,
+        }),
+        getAllUsers: build.query({
+            query: ({ query, token }) => ({
+                url: `/users?${query}`,
+                method: "GET",
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }),
+            providesTags: [tagTypes.user],
+        }),
+        updateUserRole: build.mutation({
+            query: ({ data, id, token }) => ({
+                url: `/users/${id}/role`,
+                method: "PATCH",
+                body: data,
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }),
+            invalidatesTags: [tagTypes.user],
+        }),
+        deleteUser: build.mutation({
+            query: ({ id, token }) => ({
+                url: `/users/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: `${token}`,
+                },
+            }),
+            invalidatesTags: [tagTypes.user],
         }),
     }),
 });
@@ -46,4 +80,7 @@ export const {
     useGetSingleUserQuery,
     useSignUpMutation,
     useUpdateUserMutation,
+    useGetAllUsersQuery,
+    useUpdateUserRoleMutation,
+    useDeleteUserMutation,
 } = userApi;

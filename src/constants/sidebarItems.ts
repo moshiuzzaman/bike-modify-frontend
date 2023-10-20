@@ -1,3 +1,4 @@
+import { Label } from 'flowbite-react';
 
 const sidebarItems= (role:string) => {
   
@@ -7,6 +8,11 @@ const sidebarItems= (role:string) => {
             label:"Profile",
             href:"/dashboard",
             icon : null
+        },
+        {
+            label: "Bookings",
+            href: "/dashboard/bookings",
+            icon: null,
         }
     ]
 
@@ -22,11 +28,7 @@ const sidebarItems= (role:string) => {
             href:"/dashboard/manage-services",
             icon : null
         },
-        {
-            label:"Manage Bookings",
-            href:"/dashboard/manage-bookings",
-            icon : null
-        },
+        
         {
             label:"Manage Content",
             href:"/dashboard/manage-content",
@@ -37,20 +39,12 @@ const sidebarItems= (role:string) => {
 
     const superAdminItems = [
         ...adminItems,
-        {
-            label:"Manage Admin",
-            href:"/dashboard/manage-admin",
-            icon : null
-        },
+        
     ]
     const userItems = [
         ...defaultItems,
        
-        {
-            label:"Bookings",
-            href:"/dashboard/bookings",
-            icon : null
-        },
+       
         
     ]
 

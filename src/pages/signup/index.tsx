@@ -27,7 +27,7 @@ export default function Signup() {
             <SeoHead title="Car modify" />
             <Layout>
                 <div className=" flex items-center justify-center">
-                   <RegistrationOrEditProfile />
+                   <RegistrationOrEditProfile  />
                 </div>
             </Layout>
         </>

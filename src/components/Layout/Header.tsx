@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 // Import react scroll
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "../misc/ButtonOutline";
-import Logo from "../../../public/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";

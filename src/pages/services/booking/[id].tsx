@@ -2,27 +2,43 @@ import Layout from "@/components/Layout/Layout";
 import SeoHead from "@/components/SeoHead";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { services } from "../services";
 import { Datepicker } from "flowbite-react";
+import { useRouter } from "next/router";
+import { useGetSingleServiceQuery } from "@/redux/features/service/service.api";
+import SingleService from "@/components/Singleservice";
+import { useCreateBookingMutation } from "@/redux/features/booking/booking.api";
+import useAuth from "@/hooks/useAuth";
+import { responseHandler } from "@/helpers/responseHandler";
+import { AppointmentTime } from "@/constants/appontment";
 
-const AppointmentTime = [
-    "09.00 AM",
-    "10.00 AM",
-    "11.00 AM",
-    "12.00 PM",
-    "01.00 PM",
-    "02.00 PM",
-    "03.00 PM",
-    "04.00 PM",
-    "05.00 PM",
-    "06.00 PM",
-    "07.00 PM",
-    "08.00 PM",
-    "09.00 PM",
-];
 
 const Booking = () => {
-    const [bookingTime, setBookingTime] = useState<string | null>(null);
+    const { token } = useAuth();
+    const [bookingTime, setBookingTime] = useState<string | null>("09:00 AM");
+    console.log({ bookingTime },AppointmentTime[0]);
+    
+    const route = useRouter();
+    const { id } = route.query;
+    const { data } = useGetSingleServiceQuery(id as string);
+
+    const [date, setDate] = useState<Date | null>(new Date());
+
+    const [createBooking] = useCreateBookingMutation();
+
+    const onSubmit = async () => {
+        const bookingData = {
+            date: date,
+            time: bookingTime,
+            serviceId: id,
+        };
+        console.log({ bookingData });
+        const res = await createBooking({ data: bookingData, token });
+        responseHandler(res);
+        if (!("error" in res)) {
+            route.push("/dashboard/bookings");
+        }
+    };
+
     return (
         <>
             <SeoHead title="Car modify | Services" />
@@ -77,28 +93,13 @@ const Booking = () => {
                 </div>
                 {/* left side a single service right site calender and time for booking */}
                 <div className="flex px-16 my-16 justify-between items-between">
-                    <div className="bg-white p-4 rounded">
-                        <Image
-                            src={services[0].image}
-                            alt="service image"
-                            width={500}
-                            height={500}
-                        ></Image>
-                        <h1 className="text-xl font-bold mt-4">
-                            {services[0].title}
-                        </h1>
-                        <p className="text-sm my-2 ">
-                            {services[0].description}
-                        </p>
-
-                        <h1 className="text-2xl">Price: ${services[0].price}</h1>
-                    </div>
+                    <SingleService {...data?.data} />
                     <div className="mx-4 flex w-1/3 justify-center">
                         <Datepicker
                             id="datePick"
                             inline
                             onSelectedDateChanged={(e) => {
-                                console.log(e);
+                                setDate(e);
                             }}
                         />
                     </div>
@@ -122,7 +123,10 @@ const Booking = () => {
                                 </div>
                             ))}
                         </div>
-                        <button className="bg-blue-500 text-white p-2 rounded m-2">
+                        <button
+                            onClick={onSubmit}
+                            className="bg-blue-500 text-white p-2 rounded m-2"
+                        >
                             Book Now
                         </button>
                     </div>

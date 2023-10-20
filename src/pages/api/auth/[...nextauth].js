@@ -61,6 +61,7 @@ const options = {
     callbacks,
 
     pages: {
+        signIn: "/login", // Changing the default signin page to our custom login pageS
         error: "/login", // Changing the error redirect page to our custom login page
     },
 };

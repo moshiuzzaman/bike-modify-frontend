@@ -1,10 +1,11 @@
 import { handleFetchResponse } from "@/helpers/error";
+import useAuth from "@/hooks/useAuth";
 import {
     useSignUpMutation,
     useUpdateUserMutation,
 } from "@/redux/features/user/user.api";
 import { IUser } from "@/types";
-import { Button, FileInput, Label, TextInput } from "flowbite-react";
+import { Button, FileInput, Label, Select, TextInput } from "flowbite-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -12,21 +13,20 @@ import { useForm } from "react-hook-form";
 import { register } from "react-scroll/modules/mixins/scroller";
 import { toast } from "react-toastify";
 
-const RegistrationOrEditProfile = () => {
+const RegistrationOrEditProfile = ({ user }: { user?: any }) => {
     const router = useRouter();
-    const { data: session, update } = useSession();
-    console.log({ session });
+    const { update } = useSession();
+    const { role } = useAuth();
 
-    let user: IUser | null = session?.user || null;
-
-    if (user?.email) {
-        router  .push("/dashboard");
+    if (user?.email && router.pathname === "/signup") {
+        router.push("/dashboard");
     }
     console.log(!user);
 
     const [signupUser] = useSignUpMutation();
     const [updateUser] = useUpdateUserMutation();
 
+    const { token } = useAuth();
     const {
         register,
         handleSubmit,
@@ -37,7 +37,11 @@ const RegistrationOrEditProfile = () => {
 
         const obj = { ...values };
         delete obj["file"];
+        // remove empty values4
+        Object.keys(obj).forEach((key) => obj[key] === "" && delete obj[key]);
         const data = JSON.stringify(obj);
+        console.log({ data });
+
         const formData = new FormData();
         formData.append("file", values.file[0]);
         formData.append("data", data);
@@ -50,7 +54,7 @@ const RegistrationOrEditProfile = () => {
                 res = await updateUser({
                     data: formData,
                     id: user.id,
-                    token: user.token,
+                    token,
                 }).unwrap();
 
                 update({
@@ -64,18 +68,23 @@ const RegistrationOrEditProfile = () => {
 
                 res = await signupUser(formData).unwrap();
                 console.log("res", res);
-                
             }
             handleFetchResponse(res, "Failed to create user");
             if (!("error" in res) && res) {
-                if (user) {
-                    router.push("/dashboard/profile");
-                } else {
+                if (router.pathname === "/signup") {
                     router.push("/login");
+                } else if (
+                    router.pathname === "/dashboard/manage-users/add-user" ||
+                    router.pathname === "/dashboard/manage-users/edit-user/[id]"
+                ) {
+                    router.push("/dashboard/manage-users");
+                } else if (
+                    router.pathname === "/dashboard/profile/edit-profile"
+                ) {
+                    router.push("/dashboard/profile");
                 }
             }
             toast.dismiss();
-            
         } catch (err: any) {
             toast.dismiss();
             toast.error("Something went wrong");
@@ -93,9 +102,13 @@ const RegistrationOrEditProfile = () => {
     return (
         <div className="bg-white mt-36 mb-24 gap-8 p-24 rounded flex flex-col items-center justify-center">
             <h1 className="text-6xl">
-                {router.pathname === "/dashboard/profile/edit-profile"
-                    ? "Edit Profile"
-                    : "Registration"}
+                {router.pathname === "/dashboard/profile/edit-profile" &&
+                    "Edit Profile"}
+                {router.pathname === "/signup" && "Sign up"}
+                {router.pathname === "/dashboard/manage-users/add-user" &&
+                    "Add User"}
+                {router.pathname === "/dashboard/manage-users/edit-user/[id]" &&
+                    "Edit User"}
             </h1>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -164,6 +177,7 @@ const RegistrationOrEditProfile = () => {
                         {...register("address", { required: !user })}
                     />
                 </div>
+
                 <div>
                     {/* for address */}
                     <Label

@@ -26,6 +26,7 @@ const Dashboard = () => {
                     />
                     <h1>Name:{user?.name}</h1>
                     <p>Email:{user?.email}</p>
+                    <p>Role:{user?.role}</p>
                     <p>Address:{user?.address}</p>
                 </div>
             </DashboardLayout>

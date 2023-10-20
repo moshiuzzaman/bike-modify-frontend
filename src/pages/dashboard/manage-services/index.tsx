@@ -20,13 +20,13 @@ const people = [
 export default function Users() {
   const {token}=useAuth();
   
-    const [currentPage, setCurrentPage] = useState(1);
+   const [currentPage, setCurrentPage] = useState(1);
     const { data, isLoading, refetch } = useGetServicesQuery(
         `limit=6&page=${currentPage}`
     );
     const [deleteService, { isSuccess }] = useDeleteServiceMutation();
-    console.log("Data:", data?.meta?.total);
-
+    
+ 
     const onPageChange = (page: number) => {
         setCurrentPage(page);
         refetch();
