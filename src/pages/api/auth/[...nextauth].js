@@ -9,7 +9,7 @@ const providers = [
         authorize: async (credentials) => {
             try {
                 const result = await axios.post(
-                    `http://localhost:5000/api/v1/auth/login`,
+                    `https://demo-backend.studio-23.xyz/api/v1/auth/login`,
 
                     JSON.stringify(credentials),
 
