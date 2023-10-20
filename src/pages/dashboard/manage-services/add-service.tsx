@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function AddUser() {
-    const { data: session, status } = useSession();
+    const { data: session, } = useSession();
     const user: IUser | null = session?.user || null;
     console.log(user?.token);
     

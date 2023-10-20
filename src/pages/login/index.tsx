@@ -1,16 +1,12 @@
 import Layout from "@/components/Layout/Layout";
 import SeoHead from "@/components/SeoHead";
-import { CustomError, handleFetchError } from "@/helpers/error";
-import { useLoginUserMutation } from "@/redux/features/user/user.api";
-import { login } from "@/redux/features/user/user.slice";
-import { RootState } from "@/redux/store";
+
 import { Button, TextInput } from "flowbite-react";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 
 export default function Login() {
     const router = useRouter();

@@ -1,7 +1,6 @@
 import DashboardLayout from "@/components/Layout/DashboardLayout";
 import { responseHandler } from "@/helpers/responseHandler";
 import {
-    useCreateServicesMutation,
     useGetSingleServiceQuery,
     useUpdateServiceMutation,
 } from "@/redux/features/service/service.api";
