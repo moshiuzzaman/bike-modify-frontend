@@ -162,7 +162,7 @@ export default function Users() {
                                             </td>
 
                                             <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                                                {role === "admin" ? (
+                                                {role === "ADMIN" ? (
                                                     person.role
                                                 ) : (
                                                     <Select
