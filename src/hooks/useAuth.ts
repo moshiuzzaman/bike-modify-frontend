@@ -6,7 +6,8 @@ const useAuth = () => {
     const user: IUser | null = session?.user || null;
     const role = user?.role || null;
     const token = user?.token || null;
-
+    console.log("session", session);
+    
     return {
         session,
         user,

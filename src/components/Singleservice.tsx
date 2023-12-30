@@ -24,7 +24,7 @@ const SingleService = (data: ServiceData) => {
             ></img>
             <h1 className="text-xl font-bold mt-4">{data.title}</h1>
             <p className="text-sm my-2">{data.description}</p>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-col md:flex-row">
                 <h1 className="text-xl font-bold">${data.price}</h1>
                 {!id && (
                     <>

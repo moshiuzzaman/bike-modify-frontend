@@ -9,7 +9,7 @@ const providers = [
         authorize: async (credentials) => {
             try {
                 const result = await axios.post(
-                    `https://demo-backend.studio-23.xyz/api/v1/auth/login`,
+                    `http://localhost:5000/api/v1/auth/login`,
 
                     JSON.stringify(credentials),
 
@@ -22,7 +22,9 @@ const providers = [
                 );
 
                 if (result) {
+                    console.log(result.data);
                     const user = jwtDecode(result.data.data);
+                    console.log("user", user);
                     user.token = result.data.data;
                     return { status: "success", data: user };
                 }

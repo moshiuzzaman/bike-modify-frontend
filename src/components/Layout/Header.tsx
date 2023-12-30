@@ -99,21 +99,21 @@ const Header = () => {
                                 </LinkScroll>
                                 <LinkScroll
                                     activeClass="active"
-                                    to="speaker"
+                                    to="teams"
                                     spy={true}
                                     smooth={true}
                                     duration={1000}
                                     onSetActive={() => {
-                                        setActiveLink("speaker");
+                                        setActiveLink("teams");
                                     }}
                                     className={
                                         "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative " +
-                                        (activeLink === "speaker"
-                                            ? " text-primary animation-active "
-                                            : " text-white hover:text-lime-500 ")
+                                        (activeLink === "teams"
+                                        ? " text-lime-500 animation-active "
+                                        : " text-white hover:text-lime-500 ")
                                     }
                                 >
-                                    Speaker
+                                    Teams
                                 </LinkScroll>
                             </>
                         )}
@@ -167,7 +167,7 @@ const Header = () => {
             <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
                 <div className="bg-white-500 sm:px-3">
                     {router.pathname === "/" ? (
-                        <ul className="flex w-full justify-between items-center text-black-500">
+                        <ul className="flex w-full justify-between items-center text-black-500 bg-white">
                             <LinkScroll
                                 activeClass="active"
                                 to="about"
