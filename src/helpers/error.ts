@@ -15,10 +15,8 @@ function handleFetchError(error?: CustomError) {
 }
 
 const handleFetchResponse = (response: any, errorMessage?: string) => {
-  console.log("e");
   
     toast.dismiss();
-    console.log(response);
     
 
     if (!("error" in response) && response.success) {

@@ -21,7 +21,7 @@ const RegistrationOrEditProfile = ({ user }: { user?: any }) => {
     if (user?.email && router.pathname === "/signup") {
         router.push("/dashboard");
     }
-    console.log(!user);
+    
 
     const [signupUser] = useSignUpMutation();
     const [updateUser] = useUpdateUserMutation();
@@ -33,14 +33,14 @@ const RegistrationOrEditProfile = ({ user }: { user?: any }) => {
         formState: { errors },
     } = useForm();
     const onSubmit = async (values: any) => {
-        console.log("values", values);
+        
 
         const obj = { ...values };
         delete obj["file"];
         // remove empty values4
         Object.keys(obj).forEach((key) => obj[key] === "" && delete obj[key]);
         const data = JSON.stringify(obj);
-        console.log({ data });
+        
 
         const formData = new FormData();
         formData.append("file", values.file[0]);
@@ -67,7 +67,7 @@ const RegistrationOrEditProfile = ({ user }: { user?: any }) => {
                 toast.loading("Creating user...");
 
                 res = await signupUser(formData).unwrap();
-                console.log("res", res);
+                
             }
             handleFetchResponse(res, "Failed to create user");
             if (!("error" in res) && res) {

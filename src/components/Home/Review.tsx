@@ -12,7 +12,7 @@ const contentStyle: React.CSSProperties = {
 
 const Review: React.FC = () => {
     const { data } = useGetReviewsQuery("limit=5");
-    console.log(data?.data?.data);
+    
     const reviews = data?.data?.data;
     return (
         <div className="h-[420px]  w-full bg-gray-900">
