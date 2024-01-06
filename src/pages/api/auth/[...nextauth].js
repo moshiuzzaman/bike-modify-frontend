@@ -22,9 +22,7 @@ const providers = [
                 );
 
                 if (result) {
-                    console.log(result.data);
                     const user = jwtDecode(result.data.data);
-                    console.log("user", user);
                     user.token = result.data.data;
                     return { status: "success", data: user };
                 }
@@ -39,7 +37,6 @@ const providers = [
 
 const callbacks = {
     jwt: ({ token, user, trigger, session }) => {
-        console.log("trigger", trigger);
         if (trigger === "update") {
             token = { ...token, ...session };
         }

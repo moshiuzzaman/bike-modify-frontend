@@ -9,7 +9,7 @@ const EditUser = () => {
     const { id } = router.query;
 
     const { data } = useGetSingleUserQuery(id as string);
-    console.log(data?.data);
+   
 
     return (
         <DashboardLayout>

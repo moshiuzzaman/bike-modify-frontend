@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 
 const EditServicePage = () => {
     const router = useRouter();
-    console.log(router.query.id);
 
     const { data } = useGetSingleServiceQuery(router.query.id as string);
 
@@ -49,11 +48,9 @@ const EditServicePage = () => {
         // remove empty values
         Object.keys(obj).forEach((key) => obj[key] === "" && delete obj[key]);
 
-        
-        console.log({ obj });
+   
         
         const serviceData = JSON.stringify(obj);
-        console.log({ serviceData });
 
         const formData = new FormData();
         formData.append("file", data.file[0]);

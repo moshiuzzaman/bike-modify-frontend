@@ -23,12 +23,10 @@ const EditBooking = () => {
     const [updateBooking] = useUpdateBookingMutation();
 
     const handleUpdateBooking = async () => {
-        console.log({ date}, {bookingTime });
         
         const bookingData: { date?: Date; time?: string } = {};
         date && (bookingData.date = date);
         bookingTime && (bookingData.time = bookingTime);
-        console.log({ bookingData });
 
         const res = await updateBooking({
             data: { ...bookingData, status: "PENDING" },
@@ -37,7 +35,6 @@ const EditBooking = () => {
             token,
         });
         responseHandler(res);
-        console.log(res);
         if (!("error" in res)) {
             router.push("/dashboard/bookings");
         }

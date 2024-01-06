@@ -15,7 +15,7 @@ import { AppointmentTime } from "@/constants/appontment";
 const Booking = () => {
     const { token } = useAuth();
     const [bookingTime, setBookingTime] = useState<string | null>("09:00 AM");
-    console.log({ bookingTime },AppointmentTime[0]);
+  
     
     const route = useRouter();
     const { id } = route.query;
@@ -31,7 +31,6 @@ const Booking = () => {
             time: bookingTime,
             serviceId: id,
         };
-        console.log({ bookingData });
         const res = await createBooking({ data: bookingData, token });
         responseHandler(res);
         if (!("error" in res)) {

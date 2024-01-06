@@ -39,7 +39,7 @@ export default function Users() {
         query: `limit=6&page=${currentPage}`,
     });
     const users = data?.data;
-    console.log();
+
 
     const onPageChange = (page: number) => {
         setCurrentPage(page);
@@ -67,7 +67,6 @@ export default function Users() {
         });
         responseHandler(res);
         if (!("error" in res)) {
-            console.log("res done");
 
             router.push("/dashboard/manage-users");
             setOpenModal(undefined);

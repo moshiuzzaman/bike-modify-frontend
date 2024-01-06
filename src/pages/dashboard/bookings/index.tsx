@@ -79,12 +79,10 @@ export default function MyBookings() {
         length = booking?.data?.meta?.total;
     }
 
-    console.log({ bookingData });
 
     const [updateBooking] = useUpdateBookingMutation();
 
     const handleUpdateBooking = async (id: string, status: string) => {
-        console.log({ id, status });
 
         toast.loading("Updating booking status...");
         const res = await updateBooking({
@@ -111,7 +109,6 @@ export default function MyBookings() {
         });
         responseHandler(res);
         if (!("error" in res)) {
-            console.log("res done");
 
             router.push("/dashboard/bookings");
         }

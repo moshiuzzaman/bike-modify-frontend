@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 export default function AddUser() {
     const { data: session, } = useSession();
     const user: IUser | null = session?.user || null;
-    console.log(user?.token);
     
     const {
         register,
